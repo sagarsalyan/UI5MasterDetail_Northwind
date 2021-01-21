@@ -1,0 +1,71 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:u="sap.uxap" xmlns:ui="sap.ui.table" controllerName="App.ProductDetails.controller.ProductsDetails"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>ProductDetails}">
+				<content>
+					<u:ObjectPageLayout id="productDetail" enableLazyLoading="true">
+						<u:headerTitle>
+							<u:ObjectPageHeader objectTitle="{prodDetailModel>/pname}"></u:ObjectPageHeader>
+						</u:headerTitle>
+						<u:headerContent>
+							<l:VerticalLayout>
+								<ObjectStatus title="ID" text="{prodDetailModel>/id}"/>
+							</l:VerticalLayout>
+						</u:headerContent>
+						<u:sections>
+							<u:ObjectPageSection titleUppercase="false" id="goalsSection" title="Order Details">
+								<u:subSections>
+									<u:ObjectPageSubSection id="goalsSectionSS1">
+										<u:blocks>
+											<ui:Table id="tableOrders" rows="{prodDetailModel>/results}" visibleRowCount="7">
+												<ui:extension>
+													<OverflowToolbar>
+														<Title id="title" text="Orders"/>
+													</OverflowToolbar>
+												</ui:extension>
+												<ui:columns>
+													<ui:Column width="11rem">
+														<Label text="Order ID"/>
+														<ui:template>
+															<Text text="{prodDetailModel>OrderID}" wrapping="false"/>
+														</ui:template>
+													</ui:Column>
+													<ui:Column width="11rem">
+														<Label text="Price"/>
+														<ui:template>
+															<Text text="{prodDetailModel>UnitPrice}" wrapping="false"/>
+														</ui:template>
+													</ui:Column>
+													<ui:Column width="11rem">
+														<Label text="Quantity"/>
+														<ui:template>
+															<Text text="{prodDetailModel>Quantity}" wrapping="false"/>
+														</ui:template>
+													</ui:Column>
+													<ui:Column width="11rem">
+														<Label text="Discount"/>
+														<ui:template>
+															<Text text="{prodDetailModel>Discount}" wrapping="false"/>
+														</ui:template>
+													</ui:Column>
+												</ui:columns>
+											</ui:Table>
+										</u:blocks>
+									</u:ObjectPageSubSection>
+								</u:subSections>
+							</u:ObjectPageSection>
+						</u:sections>
+					</u:ObjectPageLayout>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Reject" text="Delete" press="onDelete" tooltip="Delete Items"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
